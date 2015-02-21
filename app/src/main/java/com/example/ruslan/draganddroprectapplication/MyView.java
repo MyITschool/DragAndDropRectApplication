@@ -93,6 +93,7 @@ class MyView extends View {
 
     // отрисовка границы поля
     protected void drawBorder(Canvas canvas) {
+        // почему ANTI_ALIAS_FLAG? см. http://stackoverflow.com/questions/5377052/drawline-problem-with-paint-strokewidth-1-in-android
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(0);
