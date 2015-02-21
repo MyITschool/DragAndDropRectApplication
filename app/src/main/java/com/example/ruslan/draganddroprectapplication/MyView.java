@@ -76,6 +76,8 @@ class MyView extends View {
     }
 
     protected void onDraw(Canvas canvas) {
+        drawBackground(canvas);
+
         // рисуем квадраты
         for(Rect R: mRectangles)
             canvas.drawRect(R.left,R.top,R.right,R.bottom, mPaint);
@@ -83,13 +85,19 @@ class MyView extends View {
         drawBorder(canvas);
     }
 
+    private void drawBackground(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), paint);
+    }
+
     // отрисовка границы поля
     protected void drawBorder(Canvas canvas) {
-        Paint paint = new Paint();
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(0);
         paint.setStyle(Paint.Style.STROKE);
-        canvas.drawRect(0, 0, canvas.getWidth() - 1, canvas.getHeight() - 1, paint);
+        canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), paint);
     }
 
     @Override
